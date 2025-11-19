@@ -1,0 +1,75 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Feb 13 10:15:13 2025
+
+@author: dungc
+"""
+Turbo = 120
+Exhaust = 20
+ECU = 80
+class Car:
+    
+    def __init__(self, brand, model, hp, Worth, mileage = 0):
+        self.brand = brand
+        self.model = model
+        self.hp = hp
+        self.mileage = mileage
+        self.Worth = Worth
+
+    def Drive(self, Distance):
+        self.mileage = self.mileage + Distance
+
+Toyota = Car("Toyota", "AE86", 120, 103200, 50000)
+Honda = Car("Honda", "NSX", 250, 41230, 25000)
+Porsche = Car("Porsche","911" , 300, 90342, 20000) 
+BMW = Car("BMW", "M3 GTR", 400, 12767, 50000)       
+
+ch = input("What car brand do you want to use? Toyota, Honda, BMW or Porsche: ")
+if ch == "Toyota":
+    use_car = Toyota
+elif ch == "Honda":
+    use_car = Honda
+elif ch == "Porsche":
+    use_car = Porsche
+elif ch == "BMW":
+    use_car = BMW
+
+print(f"You used the car {use_car.brand} {use_car.model}, that has {use_car.hp} horsepower with {use_car.mileage} mileage ")
+action = input("What do you want to do now?(Drive, Tune, Sell) ")
+if action == "Tune":
+    tun = input("What do you want to tune?(Turbo, Exhaust, ECU) ")
+    if tun == "Turbo":
+        use_car.hp = Turbo + use_car.hp
+        print(f"The car {use_car.brand} {use_car.model}, now has {use_car.hp} horsepower with {use_car.mileage} mileage ")
+    if tun == "Exhaust":
+        use_car.hp = Exhaust + use_car.hp
+        print(f"The car {use_car.brand} {use_car.model}, now has {use_car.hp} horsepower with {use_car.mileage} mileage ")
+    if tun == "ECU":
+        use_car.hp = ECU + use_car.hp
+        print(f"The car {use_car.brand} {use_car.model}, now has {use_car.hp} horsepower with {use_car.mileage} mileage ")
+if action == "Drive":
+    dr = int(input("How far will you drive? "))
+    use_car.mileage = use_car.mileage + dr
+    print(f"the car now has {use_car.mileage} mileage")
+if action == "Sell":
+    print(f"You sold the {use_car.brand} {use_car.model} for {use_car.Worth} dollars!!")
+    
+anact = input("Do you want to race a car?(Yes or No) ")
+if anact == "Yes":
+    carr = input("What car will you be fighting? ")
+    if carr == "Toyota":
+        car2 = Toyota
+    elif carr == "Honda":
+        car2 = Honda
+    elif carr == "Porsche":
+        car2 = Porsche
+    elif carr == "BMW":
+        car2 = BMW
+    print(f"You chose to fight {car2.brand} {car2.model} with {car2.hp} horsepower with your {use_car.brand} {use_car.model} with {use_car.hp} horsepower")
+    if use_car.hp > car2.hp:
+        print("You win!!")
+    if use_car.hp < car2.hp:
+        print("You lose:(")
+if anact == "No":
+    print("Okay, let's preserve our cars!!")
+    
